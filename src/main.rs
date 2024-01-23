@@ -7,7 +7,7 @@ fn main() {
     nth_fibonacci_number_generator();
 }
 
-fn choice() -> u8 {
+fn choose_an_option() -> u8 {
     loop {
         println!("Choose an option: ");
         println!("1. Generate a Fibonacci number");
@@ -71,7 +71,8 @@ fn nth_fibonacci_number_iterative(number: u64) -> u64 {
 
 fn nth_fibonacci_number_generator() {
     loop {
-        let choice: u8 = choice();
+        // Choose to create a new number or exit
+        let choice: u8 = choose_an_option();
 
         match choice {
             1 => {
