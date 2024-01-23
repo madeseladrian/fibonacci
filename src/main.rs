@@ -45,14 +45,28 @@ fn get_fibonacci_number_input() -> u64 {
     }
 }
 
-fn nth_fibonacci_number(number: u64) -> u64 {
-    if number == 0 {
-        return 0;
-    } else if number == 1 {
-        return 1;
-    } else {
-        return nth_fibonacci_number(number - 1) + nth_fibonacci_number(number - 2)
+// fn nth_fibonacci_number(number: u64) -> u64 {
+//     if number == 0 {
+//         return 0;
+//     } else if number == 1 {
+//         return 1;
+//     } else {
+//         return nth_fibonacci_number(number - 1) + nth_fibonacci_number(number - 2)
+//     }
+// }
+
+// More efficient in large values
+fn nth_fibonacci_number_iterative(number: u64) -> u64 {
+    let mut a: u64 = 0;
+    let mut b: u64 = 1;
+
+    for _ in 0..number {
+        let num: u64 = a;
+        a = b;
+        b = num + b;
     }
+
+    a
 }
 
 fn nth_fibonacci_number_generator() {
@@ -65,7 +79,7 @@ fn nth_fibonacci_number_generator() {
                 let number = get_fibonacci_number_input();
 
                 // Calculate and display the nth Fibonacci number
-                let result = nth_fibonacci_number(number);
+                let result = nth_fibonacci_number_iterative(number);
                 println!("The {number}º Fibonacci number is: {result}");
                 println!("");
             }
